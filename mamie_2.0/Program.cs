@@ -11,6 +11,8 @@ namespace mamie_2._0
         static void Main(string[] args)
         {
             Console.WriteLine("aled");
+            int x = 0;
+            Console.WriteLine("je suis là ma vie");
         }
     }
 }
