@@ -4,5 +4,6 @@ public class dictionaire
 {
 	public dictionaire()
 	{
+		int a = 0;
 	}
 }
