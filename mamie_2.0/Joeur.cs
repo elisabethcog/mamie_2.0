@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace mamie_2._0
 {
-    internal class Joueur
+   internal class Joueur
     {
         string nom;
         List<string> MotsTrouvés;
@@ -53,5 +53,9 @@ namespace mamie_2._0
             }
             return Present;
         }
+    }
+}
+
+
 
     
