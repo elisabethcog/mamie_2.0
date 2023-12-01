@@ -11,7 +11,7 @@ namespace mamie_2._0
         static void Main(string[] args)
         {
             dictionaire Dico=new dictionaire("Mots_Français.txt");
-            Console.WriteLine(Dico.ToString());
+            Console.WriteLine(Dico.toString());
         }
     }
 }

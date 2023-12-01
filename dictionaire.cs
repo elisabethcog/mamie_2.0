@@ -11,7 +11,7 @@ public class dictionaire
             this.filename = filename;
         }
 
-        public string ToString(this.filename)
+        public string toString(this.filename)
         {
             StreamReader flux = null;
             try

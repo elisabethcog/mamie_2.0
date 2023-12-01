@@ -9,11 +9,12 @@ public class joueur
 
         List<string> MotsTrouvés;
 
-        int score;
+        List<int> score;
+        int nbPartie;
 
 
 
-        public Joueur (string nom, List<string> motsTrouvés, int score)
+        public Joueur (string nom, List<string> motsTrouvés, List<int> score, int nbPartie)
 
         {
 
@@ -22,6 +23,7 @@ public class joueur
             MotsTrouvés = motsTrouvés;
 
             this.score = score;
+            nbPartie = nbPartie;
 
         }
 
@@ -51,7 +53,7 @@ public class joueur
 
             }
 
-            return this.nom + "a trouver les mots " + listeMots + " pour un score final de " + this.score + " points";
+            return this.nom + "a trouver les mots " + listeMots + " pour un score final de " + this.score[nbPartie] + " points";
 
         }
 
@@ -59,11 +61,43 @@ public class joueur
 
 
 
-        public void Add_Score(int val)
+        public  void Add_Score(int val, string filename, string MotTrouvé)
 
         {
 
-            this.score = this.score + val;
+            StreamReader flux = null;
+
+            try
+            {
+                flux = new StreamReader(filename);
+                string s;
+                int score=0;
+
+                for (int i = 0; i < MotTrouvé.Length; i++)
+                {
+                    while ((s = flux.ReadLine()) != null)
+                    {
+                        string[] line = s.Split(',');
+                        if (line[0] == Convert.ToString(MotTrouvé[i]))
+                        {
+                            score = score + Convert.ToInt32(line[2]);
+                        }
+
+
+                    }
+                }
+                score = score * MotTrouvé.Length;
+                val = score + val;
+
+
+            }
+            catch (FileNotFoundException) { Console.WriteLine("file not found"); }
+            catch (IOException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            catch (Exception e) { Console.WriteLine(e.Message); }
+            finally { if (flux != null) flux.Close(); }
 
         }
 
